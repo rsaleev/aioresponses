@@ -518,10 +518,6 @@ class aioresponses(object):
         if getattr(orig_self, "_base_url", None):
             url_origin = f"{orig_self._base_url}{url}"
             url = f"{orig_self._base_url}{url}"
-        # retrieve ClientSession headers
-        if not kwargs.get("headers"): 
-            if getattr(orig_self, "_default_headers", None):
-                kwargs['headers'] = getattr(orig_self, "_default_headers")
         url = normalize_url(merge_params(url, kwargs.get("params")))
         url_str = str(url)
         for prefix in self._passthrough:
